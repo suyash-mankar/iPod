@@ -1,0 +1,35 @@
+.wheel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#outer-container{
+    height: 300px;
+    width: 300px;
+    background-color: grey;
+    position: relative;
+}
+
+#menu-container{
+    height: 280px;
+    width: 280px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    left: 3.5%;
+    top: 3.5%;
+
+
+}
+
+#center-button{
+    height: 130px;
+    width: 130px;
+    background-color: grey;
+    border-radius: 50%;
+    position: absolute;
+    left: 28%;
+    top: 28%;
+}

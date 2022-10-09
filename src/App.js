@@ -1,8 +1,12 @@
+import Wheel from './Wheel';
+
 
 function App() {
   return (
     <div className="App">
-      <h1> working </h1>
+      
+      <Wheel />
+
     </div>
   );
 }
