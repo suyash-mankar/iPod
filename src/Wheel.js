@@ -15,39 +15,22 @@ class Wheel extends React.Component{
     componentDidMount(){
 
         var currentAngle = 0;
-        var num = 0;
+        var num = 1;
 
         var menuContainer = document.getElementById('menu-container');
         var activeRegion = ZingTouch.Region(menuContainer);
         activeRegion.bind(menuContainer, 'rotate', function(e) {
             currentAngle += e.detail.distanceFromLast;
-            
-            // if(currentAngle>30 || currentAngle<-30){
-            //     if(num > 4){
-            //         num =1;
-            //     }
-            //     currentAngle=0;
-            //     var prevElement = document.getElementById(`menu-item-${num}`);
-            //     prevElement.classList.toggle("active");
-            //     if(num+1 > 4){
-            //         num =0;
-            //     }
-            //     var element = document.getElementById(`menu-item-${num+1}`);
-            //     element.classList.toggle("active");
-            //     num++;
-            // }
 
             var activeElement = document.getElementsByClassName('active');
-            var element = document.getElementById(`menu-item-${num+1}`);
-
-
             if(currentAngle>30){
                 currentAngle=0;
                 activeElement[0].classList.toggle("active");
                 num++;
-                if(num>=4){
-                    num = 0;
+                if(num>4){
+                    num = 1;
                 }
+                let element = document.getElementById(`menu-item-${num}`);
                 element.classList.toggle("active");
             }
 
@@ -58,17 +41,10 @@ class Wheel extends React.Component{
                 if(num<0){
                     num = 3;
                 }
+                let element = document.getElementById(`menu-item-${num+1}`);                
                 element.classList.toggle("active");
+               
             }
-
-            
-
-
-           
-
-
-            
-
 
         });
     }

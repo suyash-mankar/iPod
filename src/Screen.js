@@ -31,6 +31,7 @@ class Screen extends React.Component{
                     <li id='menu-item-2'>
                         <span> Music </span>
                         <span> <i className="fa-solid fa-arrow-right"></i> </span>
+                        <i className="fa-solid fa-arrow-right"></i> 
                     </li>
                     <li id='menu-item-3'>
                         <span> Games </span>
