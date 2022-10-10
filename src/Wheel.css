@@ -1,8 +1,11 @@
 .wheel{
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 100vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-150px);
 }
 
 #outer-container{
@@ -18,9 +21,9 @@
     background-color: white;
     border-radius: 50%;
     position: absolute;
-    left: 3.5%;
-    top: 3.5%;
-
+    left: 50%;
+    top: 50%;
+    transform: translate(-140px, -140px);
 
 }
 
@@ -30,6 +33,37 @@
     background-color: grey;
     border-radius: 50%;
     position: absolute;
-    left: 28%;
-    top: 28%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-65px, -65px);
+}
+
+
+.menu-button{
+    color: grey;
+}
+
+#menu{
+    position: absolute;
+    left: 43%;
+    top: 10%;
+    font-weight: bold;
+}
+
+#next{
+    position: absolute;
+    left: 83%;
+    top: 47%;
+}
+
+#prev{
+    position: absolute;
+    left:10%;
+    top: 47%;
+}
+
+#play{
+    position: absolute;
+    left:49%;
+    top: 84%;
 }
