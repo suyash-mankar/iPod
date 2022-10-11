@@ -49,23 +49,40 @@ class Wheel extends React.Component{
         });
     }
 
+
+    handleClick = () => {
+        var activeElement = document.getElementsByClassName('active');
+        var activeMenuItem = activeElement[0].getAttribute("name");
+
+    }
+
+
+
+
     render(){
+
+
 
         return (
             <div className='wheel'>
-                <div id='outer-container'>
-                    <div id='menu-container' draggable='false'>
-
-                        <div className='menu-button' id="menu"> MENU </div>
-                        <div className='menu-button' id="next"> <i className="fa-solid fa-forward-fast"></i> </div>
-                        <div className='menu-button' id="prev"> <i className="fa-solid fa-backward-fast"></i> </div>
-                        <div className='menu-button' id="play"> <i className="fa-solid fa-play"></i> </div>
-
-
-                        <div id="center-button"> 
-                        </div> 
-                    </div>
+                <div id='screen-container'>
+                    
                 </div>
+
+                <div id='outer-container'>
+                        <div id='menu-container' draggable='false'>
+
+                                <div className='menu-button' id="menu"> MENU </div>
+                                <div className='menu-button' id="next"> <i className="fa-solid fa-forward-fast"></i> </div>
+                                <div className='menu-button' id="prev"> <i className="fa-solid fa-backward-fast"></i> </div>
+                                <div className='menu-button' id="play"> <i className="fa-solid fa-play"></i> </div>
+
+                                <div id="center-button" onClick={this.handleClick}> 
+                            </div> 
+                        </div>
+                </div>
+
+                
             </div>
         )
     }
