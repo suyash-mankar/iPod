@@ -1,4 +1,7 @@
 import React from "react";
+import './Music.css'
+
+
 class Music extends React.Component{
 
     constructor(){
@@ -14,7 +17,7 @@ class Music extends React.Component{
 
 
         return (
-            <div>
+            <div className="music">
                     <h1> Music </h1>
             </div>
         )
