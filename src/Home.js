@@ -4,19 +4,7 @@ import './Home.css'
 
 class Home extends React.Component{
 
-    constructor(){
-        super();
-        this.state = {
-
-        }
-    }
-
-    componentDidMount(){
-
-        
-
-    }
-
+    
     render(){
 
         return (
@@ -24,7 +12,7 @@ class Home extends React.Component{
 
                 <h1> iPod.js </h1>
                 <ul id='menu-items'> 
-                    <li id='menu-item-1' name='coverflow' className='active'>
+                    <li id='menu-item-1' name='coverFlow' className='active'>
                         <span> Cover Flow </span>  
                         <span> <i className="fa-solid fa-arrow-right"></i> </span>
                     </li>
