@@ -7,7 +7,7 @@ import Music from './Music';
 import Settings from './Settings';
 import Games from './Games';
 import Allsongs from './Allsongs';
-import song from "./perfect.mp3";
+import song from "../assets/songs/perfect.mp3";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -32,7 +32,6 @@ class App extends React.Component {
 
   playPause = () => {
 
-    this.state.audio.pause();
 
     // Get state of song
     let isPlaying = this.state.isPlaying;

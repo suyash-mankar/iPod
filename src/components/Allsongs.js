@@ -1,5 +1,5 @@
 import React from "react";
-import './Allsongs.css';
+import '../assets/css/Allsongs.css';
 
 class  Allsongs extends React.Component{
    

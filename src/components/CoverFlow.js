@@ -1,5 +1,5 @@
 import React from "react";
-import './Coverflow.css';
+import '../assets/css/Coverflow.css';
 
 class CoverFlow extends React.Component{
 

@@ -1,5 +1,5 @@
 import React from "react";
-import './Wheel.css';
+import '../assets/css/Wheel.css';
 import { Outlet, Link } from "react-router-dom";
 
 
