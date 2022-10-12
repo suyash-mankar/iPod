@@ -15,20 +15,7 @@
 }
 
 
-/* #screen-container{
 
-    box-sizing: border-box;
-    height: 301.5px;
-    width: 299.5px;
-    position: relative;
-    border: 0.5px solid grey;
-    position: absolute;
-    top: -100%;
-    left: 50%;
-    transform: translateX(-150px);
-    padding: 20px;
-    
-} */
 
 #menu-container{
     height: 280px;
@@ -60,7 +47,7 @@
 
 #menu{
     position: absolute;
-    left: 43%;
+    left: 42%;
     top: 10%;
     font-weight: bold;
 }

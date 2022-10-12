@@ -1,4 +1,4 @@
-/* .home{
+.home{
     box-sizing: border-box;
     height: 301.5px;
     width: 299.5px;
@@ -9,7 +9,7 @@
     left: 50%;
     transform: translateX(-150px);
     padding: 20px;
-} */
+}
 
 
 ul{

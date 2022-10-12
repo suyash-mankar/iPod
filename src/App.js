@@ -1,30 +1,35 @@
 import Wheel from './Wheel';
 import React from 'react';
 import ZingTouch from 'zingtouch';
-import Screen from './Screen';
+import Home from './Home';
+import CoverFlow from './CoverFlow';
+import Music from './Music';
+import Settings from './Settings';
+import Games from './Games';
 
-
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
 class App extends React.Component {
 
 
-
-
-
   constructor(){
     super();
     this.state = {
-      activeElementName : 'coverflow'
+      activeElementName : 'coverflow',
     }
   }
 
-  
 
-
+  changeState = ()=>{
+    
+    this.setState({
+      activeElementName: 'coverflow',
+    })
+  }
 
   componentDidMount(){
+
 
     var changeState = () => {
 
@@ -34,8 +39,6 @@ class App extends React.Component {
         activeElementName
       })
     }
-    
-    
 
     var currentAngle = 0;
     var num = 1;
@@ -47,13 +50,12 @@ class App extends React.Component {
 
         var activeElement = document.getElementsByClassName('active');
         
+        
 
         if(currentAngle>30){
             currentAngle=0;
             activeElement[0].classList.toggle("active");
            
-
-
             num++;
             if(num>4){
                 num = 1;
@@ -87,10 +89,17 @@ class App extends React.Component {
 
     return (
       <div className="App">
-      
-        <Screen  />
-        <Wheel  activeElementName={this.state.activeElementName} />
-              
+
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<> <Home /> <Wheel activeElementName={this.state.activeElementName} changeState= {this.changeState} /> </>} />
+            <Route path="/music" element={<> <Music /> <Wheel activeElementName={this.state.activeElementName} changeState= {this.changeState} /> </>} />
+            <Route path="/settings" element={<> <Settings /> <Wheel activeElementName={this.state.activeElementName} changeState= {this.changeState} /> </>} />
+            <Route path="/games" element={<> <Games /> <Wheel activeElementName={this.state.activeElementName} changeState= {this.changeState} /> </>} />
+            <Route path="/coverflow" element={<> <CoverFlow /> <Wheel activeElementName={this.state.activeElementName} changeState= {this.changeState} /> </>} />
+          </Routes>
+        </BrowserRouter>
+    
       </div>
     );
   }

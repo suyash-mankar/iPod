@@ -7,10 +7,19 @@ import { Outlet, Link } from "react-router-dom";
 
     
     
+    componentDidMount(){
+
+        var changeState = this.props.changeState;
+        var menuButton = document.getElementById("menu");
+        menuButton.onclick = function(event) {
+            changeState();
+         
+        }
+    }
 
     render(){
 
-            console.log(this.props.activeElementName);
+            // console.log(this.props.activeElementName);
 
             return (
     
@@ -22,23 +31,24 @@ import { Outlet, Link } from "react-router-dom";
                     <div id='outer-container'>
                             <div id='menu-container' draggable='false'>
     
-                                    <div className='menu-button' id="menu"> 
-                                    {/* <Link to={`/`}> */}
-                                       <a href='/'> MENU </a>  
-                                    {/* </Link>  */}
+                                    <div className='menu-button' id="menu"  >  
+                                    <Link to={`/`}>
+                                       {/* <a href='/'> MENU </a>   */}
+                                       MENU
+                                    </Link> 
                                     </div>
                                     <div className='menu-button' id="next"> <i className="fa-solid fa-forward-fast"></i> </div>
                                     <div className='menu-button' id="prev"> <i className="fa-solid fa-backward-fast"></i> </div>
                                     <div className='menu-button' id="play"> <i className="fa-solid fa-play"></i> </div>
     
-                                    {/* <Link to={`/`}> */}
+                                    <Link to={`/${this.props.activeElementName}`}>
 
-                                    <a href={`/${this.props.activeElementName}`}>
+                                    {/* <a href={`/${this.props.activeElementName}`}> */}
                                         <div id="center-button">
                                         </div>
-                                    </a>
+                                    {/* </a> */}
                                         
-                                    {/* </Link> */}
+                                    </Link>
                                     
                             </div>
                     </div>        
