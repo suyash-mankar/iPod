@@ -5,17 +5,6 @@ import { Outlet, Link } from "react-router-dom";
 
   class Wheel extends React.Component{
 
-    
-    
-    componentDidMount(){
-
-        var changeState = this.props.changeState;
-        var menuButton = document.getElementById("menu");
-        menuButton.onclick = function(event) {
-            changeState();
-         
-        }
-    }
 
     render(){
 
@@ -39,7 +28,7 @@ import { Outlet, Link } from "react-router-dom";
                                     </div>
                                     <div className='menu-button' id="next"> <i className="fa-solid fa-forward-fast"></i> </div>
                                     <div className='menu-button' id="prev"> <i className="fa-solid fa-backward-fast"></i> </div>
-                                    <div className='menu-button' id="play"> <i className="fa-solid fa-play"></i> </div>
+                                    <div className='menu-button' id="play" onClick={this.props.playPause}> <i className="fa-solid fa-play"></i> </div>
     
                                     <Link to={`/${this.props.activeElementName}`}>
 

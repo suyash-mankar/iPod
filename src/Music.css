@@ -1,12 +1,65 @@
 .music{
     box-sizing: border-box;
     height: 301.5px;
-    width: 299.5px;
+    width: 350px;
     position: relative;
-    border: 0.5px solid grey;
     position: absolute;
     top: 10%;
     left: 50%;
     transform: translateX(-150px);
-    padding: 20px;
+    display: flex;
+    border-radius: 50px 50px 0 0;
+    box-shadow: 5px 20px 30px 10px grey;
+}
+
+
+.menu-items-container{
+    width: 50%;
+    padding: 15px;
+    background-color: #eeffff;
+    border-radius: 50px 0 0 0;
+
+}
+
+.wallpaper{
+    width: 50%;
+    
+}
+
+.wallpaper img{
+    height: 301.5px;
+    width: 175px;
+    border-radius: 0px 50px 0 0;
+
+}
+
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul li{
+    font-family: sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 12px 0;
+    position: relative;
+
+}
+ul li span{
+    margin-left: 10px;
+}
+
+.active{
+    background-color: #2B7DE9;
+    color: white;
+}
+
+.fa-caret-right{
+    position: absolute;
+    right: 10px;
+    top: 33%;
+    color: #E0FFFF;
 }

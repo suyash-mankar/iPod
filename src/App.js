@@ -6,6 +6,8 @@ import CoverFlow from './CoverFlow';
 import Music from './Music';
 import Settings from './Settings';
 import Games from './Games';
+import Allsongs from './Allsongs';
+import song from "./perfect.mp3";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -17,14 +19,49 @@ class App extends React.Component {
     super();
     this.state = {
       activeElementName : 'coverflow',
+      audio: new Audio(song),
+      isPlaying: false,
     }
   }
 
 
-  changeState = ()=>{
+  // playSong = ()=>{
+  //   this.state.audio.play();
+  // }
+
+
+  playPause = () => {
+
+    this.state.audio.pause();
+
+    // Get state of song
+    let isPlaying = this.state.isPlaying;
+
+    if (isPlaying) {
+      // Pause the song if it is playing
+      this.state.audio.pause();
+    } else {
+
+      // Play the song if it is paused
+      this.state.audio.play();
+    }
+
+    // Change the state of song
+    this.setState({ isPlaying: !isPlaying });
+  };
+
+
+  changeStateToHome = ()=>{
     
     this.setState({
       activeElementName: 'coverflow',
+    })
+  }
+
+  changeStateToMusic = ()=>{
+    
+    this.setState({
+      activeElementName: 'all-songs',
     })
   }
 
@@ -50,8 +87,6 @@ class App extends React.Component {
 
         var activeElement = document.getElementsByClassName('active');
         
-        
-
         if(currentAngle>30){
             currentAngle=0;
             activeElement[0].classList.toggle("active");
@@ -92,11 +127,13 @@ class App extends React.Component {
 
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<> <Home /> <Wheel activeElementName={this.state.activeElementName} changeState= {this.changeState} /> </>} />
-            <Route path="/music" element={<> <Music /> <Wheel activeElementName={this.state.activeElementName} changeState= {this.changeState} /> </>} />
-            <Route path="/settings" element={<> <Settings /> <Wheel activeElementName={this.state.activeElementName} changeState= {this.changeState} /> </>} />
-            <Route path="/games" element={<> <Games /> <Wheel activeElementName={this.state.activeElementName} changeState= {this.changeState} /> </>} />
-            <Route path="/coverflow" element={<> <CoverFlow /> <Wheel activeElementName={this.state.activeElementName} changeState= {this.changeState} /> </>} />
+            <Route path="/" element={<> <Home changeStateToHome= {this.changeStateToHome} /> <Wheel activeElementName={this.state.activeElementName}  /> </>} />
+            <Route path="/music" element={<> <Music changeStateToMusic= {this.changeStateToMusic} /> <Wheel activeElementName={this.state.activeElementName}  /> </>} />
+            <Route path="/settings" element={<> <Settings /> <Wheel activeElementName={this.state.activeElementName} /> </>} />
+            <Route path="/games" element={<> <Games /> <Wheel activeElementName={this.state.activeElementName}  /> </>} />
+            <Route path="/coverflow" element={<> <CoverFlow /> <Wheel activeElementName={this.state.activeElementName}  /> </>} />
+            <Route path="/all-songs" element={<> <Allsongs /> <Wheel activeElementName={this.state.activeElementName} playPause={this.playPause} /> </>} />
+
           </Routes>
         </BrowserRouter>
     

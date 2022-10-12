@@ -5,34 +5,42 @@
     top: 50%;
     left: 50%;
     transform: translate(-150px);
+    border-radius: 0px 0 50px 50px;
+    box-shadow: 5px 20px 30px 5px grey;
+
 }
 
 #outer-container{
     height: 300px;
-    width: 300px;
-    background-color: grey;
+    width: 350px;
+    background-color: #CDCDCD;
     position: relative;
+    border-radius: 0px 0 50px 50px;
+
 }
 
 
 
 
 #menu-container{
-    height: 280px;
-    width: 280px;
-    background-color: white;
+    height: 250px;
+    width: 250px;
+    background-color: #e7e9ea;
+    border: 0.1px solid grey;
     border-radius: 50%;
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-140px, -140px);
+    transform: translate(-125px, -125px);
 
 }
 
 #center-button{
     height: 130px;
     width: 130px;
-    background-color: grey;
+    border: 0.1px solid grey;
+
+    background-color: #A0A0A0;
     border-radius: 50%;
     position: absolute;
     left: 50%;
@@ -42,13 +50,20 @@
 
 
 .menu-button{
-    color: grey;
+    color: black;
+    font-size: 1.2rem;
+}
+
+.menu-button a{
+    color: black;
+    text-decoration: none !important;
+    
 }
 
 #menu{
     position: absolute;
-    left: 42%;
-    top: 10%;
+    left: 40%;
+    top: 8%;
     font-weight: bold;
 }
 
@@ -66,6 +81,6 @@
 
 #play{
     position: absolute;
-    left:49%;
+    left:47%;
     top: 84%;
 }
