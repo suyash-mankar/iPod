@@ -2,7 +2,6 @@
     box-sizing: border-box;
     height: 301.5px;
     width: 350px;
-    position: relative;
     position: absolute;
     top: 10%;
     left: 50%;
@@ -13,7 +12,37 @@
 
 }
 
-img{
-    border-radius: 50px 50px 0 0;
+.image-container{
     width: 350px;
+    height: 250px;
+}
+
+img{
+    width: 350px;
+    height: 250px;
+    border-radius: 50px 50px 0 0;
+}
+
+
+.progress-container{
+    height: 7px;
+    width: 100px;
+    background-color: black;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50px);
+    top: 90%;
+    border-radius: 50px;
+
+    
+
+}
+
+
+.progress {
+	background-color: red;
+	height: 100%;
+	width: 0%;
+	transition: width 0.1s linear;
+	border-radius: 50px;
 }

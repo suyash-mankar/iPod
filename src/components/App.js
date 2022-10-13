@@ -7,7 +7,7 @@ import Music from './Music';
 import Settings from './Settings';
 import Games from './Games';
 import Allsongs from './Allsongs';
-import song from "../assets/songs/perfect.mp3";
+import songs from "../assets/songs/songs";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -17,37 +17,92 @@ class App extends React.Component {
 
   constructor(){
     super();
+
+    const song1 = new Audio(songs.song1);
+		const song2 = new Audio(songs.song2);
+		const song3 = new Audio(songs.song3);
+
     this.state = {
       activeElementName : 'coverflow',
-      audio: new Audio(song),
-      isPlaying: false,
+      songsList: {
+				songs: [song1, song2, song3],
+				thumbnails: [	
+        "https://m.media-amazon.com/images/M/MV5BMGU5YTRjMTUtZDU4Mi00NjFlLWExYTAtMjVkN2JmOTE1Y2Q2XkEyXkFqcGdeQXVyNjE0ODc0MDc@._V1_.jpg",
+        "https://lastfm.freetls.fastly.net/i/u/ar0/7126efde1773208e2d66e9bc732bb69e.jpg",
+        "https://static01.nyt.com/images/2021/01/21/arts/19olivia-copyLN/19olivia-articleLarge.jpg?quality=75&auto=webp&disable=upscale"
+      ],
+				songIndex: 0,
+				name: ["Perfect", "Lovely", "Drivers License"],
+				isPlaying: false,
+			},
     }
+
+    this.controllerRef = React.createRef();
+		this.progressRef = React.createRef();
   }
 
 
-  // playSong = ()=>{
-  //   this.state.audio.play();
-  // }
 
+  playPause = (songsList) => {
 
-  playPause = () => {
-
-
-    // Get state of song
-    let isPlaying = this.state.isPlaying;
-
-    if (isPlaying) {
-      // Pause the song if it is playing
-      this.state.audio.pause();
+    const { songIndex } = songsList;
+    if (songsList.isPlaying) {
+        songsList.isPlaying = false;
+        songsList.songs[songIndex].pause();
     } else {
-
-      // Play the song if it is paused
-      this.state.audio.play();
+        songsList.isPlaying = true;
+        songsList.songs[songIndex].play();
     }
-
-    // Change the state of song
-    this.setState({ isPlaying: !isPlaying });
+    this.setState({ songsList });
+  
   };
+
+
+
+  nextSong = (songsList) => {
+		
+			songsList.songs.map((song) => {
+				song.pause();
+				song.currentTime = 0;
+				return [];
+			});
+			songsList.isPlaying = false;
+			songsList.songIndex += 1;
+			if (songsList.songIndex > songsList.songs.length - 1) {
+				songsList.songIndex = 0;
+			}
+			songsList.songs[songsList.songIndex].play();
+			songsList.isPlaying = true;
+			this.setState({ songsList });
+		
+	};
+
+  prevSong = (songsList) => {
+		
+			songsList.songs.map((song) => {
+				song.pause();
+				song.currentTime = 0;
+				return [];
+			});
+			songsList.isPlaying = false;
+			songsList.songIndex -= 1;
+			if (songsList.songIndex < 0) {
+				songsList.songIndex = songsList.songs.length - 1;
+			}
+			songsList.songs[songsList.songIndex].play();
+			songsList.isPlaying = true;
+			this.setState({ songsList });
+		
+	};
+
+
+  updateProgress = (event) => {
+		
+			const { currentTime, duration } = event.srcElement;
+			const progressPercent = (currentTime / duration) * 100;
+			this.progressRef.current.style.width = progressPercent + "%";
+	
+	};
 
 
   changeStateToHome = ()=>{
@@ -126,12 +181,12 @@ class App extends React.Component {
 
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<> <Home changeStateToHome= {this.changeStateToHome} /> <Wheel activeElementName={this.state.activeElementName}  /> </>} />
-            <Route path="/music" element={<> <Music changeStateToMusic= {this.changeStateToMusic} /> <Wheel activeElementName={this.state.activeElementName}  /> </>} />
-            <Route path="/settings" element={<> <Settings /> <Wheel activeElementName={this.state.activeElementName} /> </>} />
-            <Route path="/games" element={<> <Games /> <Wheel activeElementName={this.state.activeElementName}  /> </>} />
-            <Route path="/coverflow" element={<> <CoverFlow /> <Wheel activeElementName={this.state.activeElementName}  /> </>} />
-            <Route path="/all-songs" element={<> <Allsongs /> <Wheel activeElementName={this.state.activeElementName} playPause={this.playPause} /> </>} />
+            <Route path="/" element={<> <Home changeStateToHome= {this.changeStateToHome} /> <Wheel currentScreen = {'home'} activeElementName={this.state.activeElementName}  /> </>} />
+            <Route path="/music" element={<> <Music changeStateToMusic= {this.changeStateToMusic} /> <Wheel currentScreen = {'music'} activeElementName={this.state.activeElementName}  /> </>} />
+            <Route path="/settings" element={<> <Settings /> <Wheel currentScreen = {'settings'} activeElementName={this.state.activeElementName} /> </>} />
+            <Route path="/games" element={<> <Games /> <Wheel currentScreen = {'games'} activeElementName={this.state.activeElementName}  /> </>} />
+            <Route path="/coverflow" element={<> <CoverFlow /> <Wheel currentScreen = {'coverflow'} activeElementName={this.state.activeElementName}  /> </>} />
+            <Route path="/all-songs" element={<> <Allsongs playPause={this.playPause} songsList={this.state.songsList} updateProgress={this.updateProgress} progressRef={this.progressRef} /> <Wheel currentScreen = {'all-songs'} activeElementName={this.state.activeElementName} playPause={this.playPause} songsList={this.state.songsList} nextSong={this.nextSong} prevSong={this.prevSong} /> </>} />
 
           </Routes>
         </BrowserRouter>

@@ -4,12 +4,13 @@ import { Outlet, Link } from "react-router-dom";
 
 
   class Wheel extends React.Component{
-
-
+   
     render(){
 
-            // console.log(this.props.activeElementName);
-
+        if(this.props.currentScreen === 'all-songs'){
+            var {playPause, nextSong, prevSong, songsList} = this.props;
+        }
+    
             return (
     
                 <div className='wheel'>
@@ -22,21 +23,16 @@ import { Outlet, Link } from "react-router-dom";
     
                                     <div className='menu-button' id="menu"  >  
                                     <Link to={`/`}>
-                                       {/* <a href='/'> MENU </a>   */}
                                        MENU
                                     </Link> 
                                     </div>
-                                    <div className='menu-button' id="next"> <i className="fa-solid fa-forward-fast"></i> </div>
-                                    <div className='menu-button' id="prev"> <i className="fa-solid fa-backward-fast"></i> </div>
-                                    <div className='menu-button' id="play" onClick={this.props.playPause}> <i className="fa-solid fa-play"></i> </div>
+                                    <div className='menu-button' id="next" onClick={()=>{nextSong(songsList)}} > <i className="fa-solid fa-forward-fast"></i> </div>
+                                    <div className='menu-button' id="prev" onClick={()=>{prevSong(songsList)}} > <i className="fa-solid fa-backward-fast"></i> </div>
+                                    <div className='menu-button' id="play" onClick={()=>{playPause(songsList)}}> <i className="fa-solid fa-play"></i> </div>
     
                                     <Link to={`/${this.props.activeElementName}`}>
-
-                                    {/* <a href={`/${this.props.activeElementName}`}> */}
                                         <div id="center-button">
-                                        </div>
-                                    {/* </a> */}
-                                        
+                                        </div>                                       
                                     </Link>
                                     
                             </div>
