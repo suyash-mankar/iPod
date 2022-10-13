@@ -28,8 +28,8 @@ class App extends React.Component {
 				songs: [song1, song2, song3],
 				thumbnails: [	
         "https://m.media-amazon.com/images/M/MV5BMGU5YTRjMTUtZDU4Mi00NjFlLWExYTAtMjVkN2JmOTE1Y2Q2XkEyXkFqcGdeQXVyNjE0ODc0MDc@._V1_.jpg",
-        "https://lastfm.freetls.fastly.net/i/u/ar0/7126efde1773208e2d66e9bc732bb69e.jpg",
-        "https://static01.nyt.com/images/2021/01/21/arts/19olivia-copyLN/19olivia-articleLarge.jpg?quality=75&auto=webp&disable=upscale"
+        "https://i1.sndcdn.com/artworks-4ngu2T8sEGWEfas6-luktdQ-t500x500.jpg",
+        "https://i1.sndcdn.com/artworks-3fNzGvRsSWqvT6KZ-T3fvqg-t500x500.jpg"
       ],
 				songIndex: 0,
 				name: ["Perfect", "Lovely", "Drivers License"],
@@ -37,27 +37,35 @@ class App extends React.Component {
 			},
     }
 
-    this.controllerRef = React.createRef();
 		this.progressRef = React.createRef();
   }
 
-
-
-  playPause = (songsList) => {
+  pauseSong = (songsList) => {
 
     const { songIndex } = songsList;
-    if (songsList.isPlaying) {
-        songsList.isPlaying = false;
-        songsList.songs[songIndex].pause();
-    } else {
-        songsList.isPlaying = true;
-        songsList.songs[songIndex].play();
-    }
+    songsList.isPlaying = false;
+    songsList.songs[songIndex].pause();
+    this.setState({ songsList });
+  
+  };
+
+  playSong = (songsList) => {
+
+    const { songIndex } = songsList;
+    songsList.isPlaying = true;
+    songsList.songs[songIndex].play();
     this.setState({ songsList });
   
   };
 
 
+  playPause = (songsList) => {
+    if (songsList.isPlaying) {
+        this.pauseSong(songsList);
+    } else {
+        this.playSong(songsList);
+    }
+  };
 
   nextSong = (songsList) => {
 		
@@ -98,7 +106,7 @@ class App extends React.Component {
 
   updateProgress = (event) => {
 		
-			const { currentTime, duration } = event.srcElement;
+			const { currentTime, duration } = event.target;
 			const progressPercent = (currentTime / duration) * 100;
 			this.progressRef.current.style.width = progressPercent + "%";
 	
@@ -186,8 +194,7 @@ class App extends React.Component {
             <Route path="/settings" element={<> <Settings /> <Wheel currentScreen = {'settings'} activeElementName={this.state.activeElementName} /> </>} />
             <Route path="/games" element={<> <Games /> <Wheel currentScreen = {'games'} activeElementName={this.state.activeElementName}  /> </>} />
             <Route path="/coverflow" element={<> <CoverFlow /> <Wheel currentScreen = {'coverflow'} activeElementName={this.state.activeElementName}  /> </>} />
-            <Route path="/all-songs" element={<> <Allsongs playPause={this.playPause} songsList={this.state.songsList} updateProgress={this.updateProgress} progressRef={this.progressRef} /> <Wheel currentScreen = {'all-songs'} activeElementName={this.state.activeElementName} playPause={this.playPause} songsList={this.state.songsList} nextSong={this.nextSong} prevSong={this.prevSong} /> </>} />
-
+            <Route path="/all-songs" element={<> <Allsongs playPause={this.playPause} songsList={this.state.songsList} updateProgress={this.updateProgress} progressRef={this.progressRef} pauseSong={this.pauseSong} playSong={this.playSong} /> <Wheel currentScreen = {'all-songs'} activeElementName={this.state.activeElementName} playPause={this.playPause} pauseSong={this.pauseSong} playSong={this.playSong} songsList={this.state.songsList} nextSong={this.nextSong} prevSong={this.prevSong} /> </>} />
           </Routes>
         </BrowserRouter>
     
