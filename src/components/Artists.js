@@ -1,19 +1,20 @@
 import React from "react";
-
-class CoverFlow extends React.Component{
+class  Artists extends React.Component{
 
    render(){
+    
         return (
-            <div style={styles.coverflow}>
-                <img style={styles.img} src='https://1.bp.blogspot.com/-OpnoEBQASxw/XbomQ7OYZ7I/AAAAAAAAPIg/DD6dDJrw608PEAG13Ii9DTn_SRfAEASRgCLcBGAsYHQ/s1600/3D-Coverflow-PowerPoint-Templates.gif' />
+            <div className='Artists' style={styles.Artists}>
+                    <img style={styles.img} src='https://render.fineartamerica.com/images/rendered/default/poster/8/10/break/images-medium-5/ed-sheeran-and-song-titles-tony-rubino.jpg' alt='Artists' />
             </div>
-        )   
+        )
+        
     }
 }
 
 
 const styles = {
-    coverflow : {
+    Artists : {
         boxSizing: "border-box",
         height: 301.5,
         width: 350,
@@ -35,4 +36,6 @@ const styles = {
     }
 }
 
-export default CoverFlow;
+
+
+export default Artists;

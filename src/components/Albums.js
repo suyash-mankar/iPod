@@ -1,19 +1,20 @@
 import React from "react";
-
-class CoverFlow extends React.Component{
+class  Albums extends React.Component{
 
    render(){
+    
         return (
-            <div style={styles.coverflow}>
-                <img style={styles.img} src='https://1.bp.blogspot.com/-OpnoEBQASxw/XbomQ7OYZ7I/AAAAAAAAPIg/DD6dDJrw608PEAG13Ii9DTn_SRfAEASRgCLcBGAsYHQ/s1600/3D-Coverflow-PowerPoint-Templates.gif' />
+            <div className='Albums' style={styles.Albums}>
+                    <img style={styles.img} src='https://live.staticflickr.com/8044/8114076425_05eff08268_z.jpg' alt='Albums' />
             </div>
-        )   
+        )
+        
     }
 }
 
 
 const styles = {
-    coverflow : {
+    Albums : {
         boxSizing: "border-box",
         height: 301.5,
         width: 350,
@@ -35,4 +36,6 @@ const styles = {
     }
 }
 
-export default CoverFlow;
+
+
+export default Albums;

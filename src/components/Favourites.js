@@ -1,19 +1,20 @@
 import React from "react";
-
-class CoverFlow extends React.Component{
+class  Favourites extends React.Component{
 
    render(){
+    
         return (
-            <div style={styles.coverflow}>
-                <img style={styles.img} src='https://1.bp.blogspot.com/-OpnoEBQASxw/XbomQ7OYZ7I/AAAAAAAAPIg/DD6dDJrw608PEAG13Ii9DTn_SRfAEASRgCLcBGAsYHQ/s1600/3D-Coverflow-PowerPoint-Templates.gif' />
+            <div className='Favourites' style={styles.Favourites}>
+                    <img style={styles.img} src='https://c-fa.cdn.smule.com/rs-s35/arr/15/a0/4bd87e54-da45-47e2-91b5-1ff80a3cea08_1024.jpg' alt='Favourites' />
             </div>
-        )   
+        )
+        
     }
 }
 
 
 const styles = {
-    coverflow : {
+    Favourites : {
         boxSizing: "border-box",
         height: 301.5,
         width: 350,
@@ -35,4 +36,6 @@ const styles = {
     }
 }
 
-export default CoverFlow;
+
+
+export default Favourites;

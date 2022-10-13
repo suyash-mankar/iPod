@@ -19,7 +19,7 @@ class Music extends React.Component{
 
         <div className="menu-items-container">
 
-            <h1> iPod.js </h1>
+            <h1> Music </h1>
             <ul id='menu-items'> 
                 <li id='menu-item-1' name='all-songs' className='active'>
                     <span> All Songs </span>  

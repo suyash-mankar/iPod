@@ -6,7 +6,8 @@ class  Allsongs extends React.Component{
     constructor(){
         super();
         this.state={
-            currentTime: 0
+            currentTime: 0,
+            progressWidth: 0
         }
     }
     
@@ -36,7 +37,8 @@ class  Allsongs extends React.Component{
         }
       
         return min + ':' + sec;
-      }
+    }
+
 
    render(){
 
@@ -46,9 +48,9 @@ class  Allsongs extends React.Component{
     const audio = songs[songIndex];
 
     audio.addEventListener("timeupdate", (event) => {
-        updateProgress(event);
         this.setState({
-            currentTime:  this.formatSecondsAsTime(audio.currentTime)
+            currentTime:  this.formatSecondsAsTime(audio.currentTime),
+            progressWidth: (audio.currentTime/audio.duration)*100
         })   
 	});
 
@@ -63,7 +65,7 @@ class  Allsongs extends React.Component{
 
             </div>
             <div className="progress-container">
-                <div className="progress" ref={progressRef}></div>
+                <div className="progress" ref={progressRef} style={{width: `${this.state.progressWidth}%`}}></div>
             </div>
         </div>
         

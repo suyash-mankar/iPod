@@ -2,7 +2,6 @@
     box-sizing: border-box;
     height: 301.5px;
     width: 350px;
-    position: relative;
     position: absolute;
     top: 10%;
     left: 50%;
@@ -13,10 +12,10 @@
 }
 
 
-.menu-items-container{
+.music .menu-items-container{
     width: 50%;
     padding: 15px;
-    background-color: #eeffff;
+    background-color: white;
     border-radius: 50px 0 0 0;
 
 }
@@ -57,9 +56,9 @@ ul li span{
     color: white;
 }
 
-.fa-caret-right{
+.music .fa-caret-right{
     position: absolute;
     right: 10px;
     top: 33%;
-    color: #E0FFFF;
+    color: white;
 }

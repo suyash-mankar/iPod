@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 
 
   class Wheel extends React.Component{
+
    
     render(){
 
         if(this.props.currentScreen === 'all-songs'){
             var {playPause, nextSong, prevSong, songsList} = this.props;
+            var insideSongs = true;
         }
         
         return (
@@ -25,9 +27,9 @@ import { Link } from "react-router-dom";
                                 MENU
                             </Link> 
                             </div>
-                            <div className='menu-button' id="next" onClick={()=>{nextSong(songsList)}} > <i className="fa-solid fa-forward-fast"></i> </div>
-                            <div className='menu-button' id="prev" onClick={()=>{prevSong(songsList)}} > <i className="fa-solid fa-backward-fast"></i> </div>
-                            <div className='menu-button' id="play" onClick={()=>{playPause(songsList)}}> <i className="fa-solid fa-play"></i> </div>
+                            <div className='menu-button' id="next" onClick={()=>{ insideSongs && nextSong(songsList) }} > <i className="fa-solid fa-forward-fast"></i> </div>
+                            <div className='menu-button' id="prev" onClick={()=>{insideSongs && prevSong(songsList)}} > <i className="fa-solid fa-backward-fast"></i> </div>
+                            <div className='menu-button' id="play" onClick={()=>{insideSongs && playPause(songsList)}}> <i className="fa-solid fa-play"></i> </div>
 
                             <Link to={`/${this.props.activeElementName}`}>
                                 <div id="center-button">

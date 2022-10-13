@@ -6,6 +6,9 @@ import CoverFlow from './CoverFlow';
 import Music from './Music';
 import Settings from './Settings';
 import Games from './Games';
+import Artists from './Artists';
+import Albums from './Albums';
+import Favourites from './Favourites';
 import Allsongs from './Allsongs';
 import songs from "../assets/songs/songs";
 
@@ -104,14 +107,6 @@ class App extends React.Component {
 	};
 
 
-  updateProgress = (event) => {
-		
-			const { currentTime, duration } = event.target;
-			const progressPercent = (currentTime / duration) * 100;
-			this.progressRef.current.style.width = progressPercent + "%";
-	
-	};
-
 
   changeStateToHome = ()=>{
     
@@ -189,12 +184,15 @@ class App extends React.Component {
 
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<> <Home changeStateToHome= {this.changeStateToHome} /> <Wheel currentScreen = {'home'} activeElementName={this.state.activeElementName}  /> </>} />
-            <Route path="/music" element={<> <Music changeStateToMusic= {this.changeStateToMusic} /> <Wheel currentScreen = {'music'} activeElementName={this.state.activeElementName}  /> </>} />
-            <Route path="/settings" element={<> <Settings /> <Wheel currentScreen = {'settings'} activeElementName={this.state.activeElementName} /> </>} />
-            <Route path="/games" element={<> <Games /> <Wheel currentScreen = {'games'} activeElementName={this.state.activeElementName}  /> </>} />
-            <Route path="/coverflow" element={<> <CoverFlow /> <Wheel currentScreen = {'coverflow'} activeElementName={this.state.activeElementName}  /> </>} />
-            <Route path="/all-songs" element={<> <Allsongs playPause={this.playPause} songsList={this.state.songsList} updateProgress={this.updateProgress} progressRef={this.progressRef} pauseSong={this.pauseSong} playSong={this.playSong} /> <Wheel currentScreen = {'all-songs'} activeElementName={this.state.activeElementName} playPause={this.playPause} pauseSong={this.pauseSong} playSong={this.playSong} songsList={this.state.songsList} nextSong={this.nextSong} prevSong={this.prevSong} /> </>} />
+            <Route path="/" element={<> <Home changeStateToHome= {this.changeStateToHome} /> <Wheel  activeElementName={this.state.activeElementName}  /> </>} />
+            <Route path="/music" element={<> <Music changeStateToMusic= {this.changeStateToMusic} /> <Wheel  activeElementName={this.state.activeElementName}  /> </>} />
+            <Route path="/settings" element={<> <Settings /> <Wheel activeElementName={this.state.activeElementName} /> </>} />
+            <Route path="/games" element={<> <Games /> <Wheel activeElementName={this.state.activeElementName}  /> </>} />
+            <Route path="/artists" element={<> <Artists /> <Wheel activeElementName={this.state.activeElementName}  /> </>} />
+            <Route path="/albums" element={<> <Albums /> <Wheel activeElementName={this.state.activeElementName}  /> </>} />
+            <Route path="/favourites" element={<> <Favourites /> <Wheel activeElementName={this.state.activeElementName}  /> </>} />
+            <Route path="/coverflow" element={<> <CoverFlow /> <Wheel activeElementName={this.state.activeElementName}  /> </>} />
+            <Route path="/all-songs" element={<> <Allsongs playPause={this.playPause} songsList={this.state.songsList} updateProgress={this.updateProgress} progressRef={this.progressRef} pauseSong={this.pauseSong} playSong={this.playSong} /> <Wheel currentScreen={'all-songs'} activeElementName={this.state.activeElementName} playPause={this.playPause} pauseSong={this.pauseSong} playSong={this.playSong} songsList={this.state.songsList} nextSong={this.nextSong} prevSong={this.prevSong} /> </>} />
           </Routes>
         </BrowserRouter>
     
