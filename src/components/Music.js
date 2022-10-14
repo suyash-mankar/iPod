@@ -5,11 +5,9 @@ import '../assets/css/Music.css'
 class Music extends React.Component{
 
     componentDidMount(){
-
+        // change the active element in App component state to all-songs as soon as music component is mounted
         var changeStateToMusic = this.props.changeStateToMusic;
         changeStateToMusic();
-         
-        
     }
     
     render(){

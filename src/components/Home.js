@@ -6,14 +6,16 @@ class Home extends React.Component{
 
     componentDidMount(){
 
+        // change the active element in App component state to coverflow as soon as home component is mounted
         var changeStateToHome = this.props.changeStateToHome;
         changeStateToHome();
 
-        var menuButton = document.getElementById("menu");
-        menuButton.onclick = function(event) {
-            changeStateToHome();
+        // var menuButton = document.getElementById("menu");
+        // menuButton.onclick = function(event) {
+        //     // change the active element in App component state to coverflow when menu button is clicked
+        //     changeStateToHome();
          
-        }
+        // }
     }
     
     render(){

@@ -5,7 +5,7 @@ class CoverFlow extends React.Component{
    render(){
         return (
             <div style={styles.coverflow}>
-                <img style={styles.img} src='https://1.bp.blogspot.com/-OpnoEBQASxw/XbomQ7OYZ7I/AAAAAAAAPIg/DD6dDJrw608PEAG13Ii9DTn_SRfAEASRgCLcBGAsYHQ/s1600/3D-Coverflow-PowerPoint-Templates.gif' />
+                <img style={styles.img} src='https://1.bp.blogspot.com/-OpnoEBQASxw/XbomQ7OYZ7I/AAAAAAAAPIg/DD6dDJrw608PEAG13Ii9DTn_SRfAEASRgCLcBGAsYHQ/s1600/3D-Coverflow-PowerPoint-Templates.gif' alt='coverflow' />
             </div>
         )   
     }
