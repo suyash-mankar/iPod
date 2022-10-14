@@ -158,7 +158,6 @@ class App extends React.Component {
     var activeRegion = ZingTouch.Region(menuContainer);
     activeRegion.bind(menuContainer, 'rotate', function(e) {
         currentAngle += e.detail.distanceFromLast;
-        console.log(currentAngle);
         var activeElement = document.getElementsByClassName('active');
         
         // if the wheel is rotated clockwise
